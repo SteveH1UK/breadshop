@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee webapp_4_0.xsd"
+	version="4.0">
+	<context-param>
+		<param-name>com.ocpsoft.pretty.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			org.springframework.web.context.support.AnnotationConfigWebApplicationContext
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>com.steveh1uk.breadshop.core.config.BreadshopSpringConfig
+		</param-value>
+	</context-param>
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		configuration class
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+</web-app>

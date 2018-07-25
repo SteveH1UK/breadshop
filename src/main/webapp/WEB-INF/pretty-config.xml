@@ -1,0 +1,29 @@
+<pretty-config
+	xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+
+	<url-mapping id="reserve">
+		<pattern value="/reserve" />
+		<view-id value="/faces/reserve.jsp" />
+	</url-mapping>
+	
+	<url-mapping id="review">
+		<pattern value="/review" />
+		<view-id value="/faces/review.jsp" />
+	</url-mapping>
+	
+    <url-mapping id="alreadyReserved">
+		<pattern value="/alreadyReserved" />
+		<view-id value="/faces/alreadyReserved.jsp" />
+	</url-mapping>
+	
+	
+	<url-mapping id="cancel">
+		<pattern value="/cancel" />
+		<view-id value="/faces/cancelConfirmation.jsp" />
+	</url-mapping>
+	
+</pretty-config>

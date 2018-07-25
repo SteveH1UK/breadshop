@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+	version="1.2">
+	
+	<application>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+    </application>
+	
+	<lifecycle>
+	    <phase-listener>com.ocpsoft.pretty.faces.event.MultiPageMessagesSupport</phase-listener>
+   </lifecycle>
+
+
+	<navigation-rule>
+		<description>Show your reservation</description>
+		<from-view-id>/reserve.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/review.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+      
+    <!-- Data -->
+    <managed-bean>
+		<managed-bean-name>reservation</managed-bean-name>
+		<managed-bean-class>com.steveh1uk.breadshop.core.reserve.ReservationDTO</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+   <!-- Controllers -->
+      <managed-bean>
+        <description>Controls reserving a reservation</description>
+        <managed-bean-name>reserveController</managed-bean-name>
+        <managed-bean-class>com.steveh1uk.breadshop.web.reserve.ReserveController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+			<property-name>reservation</property-name>
+			<value>#{reservation}</value>
+	   </managed-property>
+	    <managed-property>
+			<property-name>breadReservationServiceFacade</property-name>
+			<value>#{breadReservationServiceFacade}</value>
+	   </managed-property>
+    </managed-bean>
+   <managed-bean>
+       <description>Controls reviewing a reservation</description>
+       <managed-bean-name>reviewController</managed-bean-name>
+       <managed-bean-class>com.steveh1uk.breadshop.web.reserve.ReviewController</managed-bean-class>
+       <managed-bean-scope>request</managed-bean-scope>
+       <managed-property>
+			<property-name>reservation</property-name>
+			<value>#{reservation}</value>
+	   </managed-property>
+	   <managed-property>
+			<property-name>breadReservationServiceFacade</property-name>
+			<value>#{breadReservationServiceFacade}</value>
+	   </managed-property>
+   </managed-bean>
+  <managed-bean>
+       <description>Controls displaying the cancelled reservation confirmation</description>
+       <managed-bean-name>cancelController</managed-bean-name>
+       <managed-bean-class>com.steveh1uk.breadshop.web.reserve.CancelController</managed-bean-class>
+       <managed-bean-scope>request</managed-bean-scope>
+       <managed-property>
+			<property-name>reservation</property-name>
+			<value>#{reservation}</value>
+	   </managed-property>
+	       <managed-property>
+			<property-name>breadReservationServiceFacade</property-name>
+			<value>#{breadReservationServiceFacade}</value>
+	   </managed-property>
+   </managed-bean>
+    <managed-bean>
+       <description>Controls what is displayed when a reservation has already been made</description>
+       <managed-bean-name>alreadyReservedController</managed-bean-name>
+       <managed-bean-class>com.steveh1uk.breadshop.web.reserve.AlreadyReservedController</managed-bean-class>
+       <managed-bean-scope>request</managed-bean-scope>
+       <managed-property>
+			<property-name>reservation</property-name>
+			<value>#{reservation}</value>
+	   </managed-property>
+        <managed-property>
+			<property-name>breadReservationServiceFacade</property-name>
+			<value>#{breadReservationServiceFacade}</value>
+	   </managed-property>
+   </managed-bean>
+
+  
+</faces-config>
